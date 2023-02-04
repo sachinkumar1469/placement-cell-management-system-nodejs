@@ -12,6 +12,7 @@ const interviewSchema = new Schema({
         required:true,
         ref:"Interview"
     },
+    companyName:String,
     date:{
         type:String,
         required:true,
@@ -54,5 +55,6 @@ const studentSchema = new Schema({
 });
 
 const Student = new mongoose.model("student",studentSchema);
+
 
 module.exports = Student;

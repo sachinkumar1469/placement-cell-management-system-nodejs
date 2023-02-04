@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <header class="header">
+        <h2>PlaceMent Cell</h2>
+        <div class="div">
+            <a href="" class="btn">Students</a>
+            <a href="" class="btn">Interview</a>
+            <a href="" class="btn">Download</a>
+            <a class="btn" href="/auth/logout">LogOut</a>
+        </div>
+    </header>
+    <div class="main form-cont">
+        <form action="/student/add" method="post">
+            <input type="text" class="in" name="name" id="" placeholder="Name">
+            <input type="text" class="in" name="email" id="" placeholder="Email">
+            <input type="text" class="in" name="batch" id="" placeholder="Batch">
+            <input type="text" class="in" name="college" id="" placeholder="College">
+            <div class="">
+                <input type="radio" name="status" value="true" id="placed">
+                <label for="placed">Placed</label>
+                <input type="radio" name="status" value="false" id="unplaced">
+                <label for="unplaced">Unplaced</label>
+            </div>
+            <div class="score">
+                <input type="number" class="in" name="dsa_score" id="" placeholder="DSA Score">
+                <input type="number" class="in" name="web_score" id="" placeholder="Web Dev Score">
+                <input type="number" class="in" name="react_score" id="" placeholder="React Score">
+            </div>
+            <div class="">
+                <button type="submit" class="form-btn">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

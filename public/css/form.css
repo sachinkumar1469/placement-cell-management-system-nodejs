@@ -1,0 +1,43 @@
+.form-cont{
+    width: 50%;
+    margin: 0 auto;
+}
+.form-cont form{
+    width: 80%;
+    border: 1px solid gray;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    margin: 2rem auto;
+}
+.form-cont form .in{
+    height: 2rem;
+    font-size: 1.2rem;
+    padding:1rem;
+}
+.form-cont form .score{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-self: stretch;
+    row-gap: 1rem;
+}
+
+.form-cont form .score input{
+    width: max-content;
+    width: 90%;
+    font-size: 1rem;
+}
+
+.form-cont form .interviews > div{
+    margin-top: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.danger{
+    background-color: red;
+}
+.success{
+    background-color: rgb(135, 219, 9);
+}

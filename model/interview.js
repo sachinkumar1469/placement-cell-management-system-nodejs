@@ -11,7 +11,7 @@ const interviewSchema = new Schema({
         required: true,
     },
     students:[{
-        student:{
+        name:{
             type:Schema.Types.ObjectId,
             ref:"Student"
         },
@@ -20,4 +20,7 @@ const interviewSchema = new Schema({
             enum:["PASS","FAIL","HOLD","NOT_ATTEMPTED"]
         }
     }]
-})
+});
+
+const Interview = mongoose.model("Interview",interviewSchema);
+module.exports = Interview;

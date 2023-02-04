@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <header class="header">
+        <h2>PlaceMent Cell</h2>
+        <div class="div">
+            <a href="" class="btn">Students</a>
+            <a href="" class="btn">Interview</a>
+            <a href="" class="btn">Download</a>
+            <a class="btn" href="/auth/logout">LogOut</a>
+        </div>
+    </header>
+    <div class="main form-cont">
+        <form action="/student/<%=student._id%>" method="post">
+            <input type="text" class="in" name="name" id="" value="<%=student.name%>" disabled placeholder="Name">
+            <input type="text" class="in" name="email" id="" value="<%=student.email%>" disabled placeholder="Email">
+            <input type="text" class="in" name="batch" id="" value="<%=student.batch%>" disabled placeholder="Batch">
+            <input type="text" class="in" name="college" id="" value="<%=student.college%>" disabled placeholder="College">
+            <div class="">
+                <%if(student.status == true) {%>
+                    <input type="radio" name="status" value="true" checked disabled id="placed">
+                    <label for="placed">Placed</label>
+                    <input type="radio" name="status" value="false" disabled id="unplaced">
+                    <label for="unplaced">Unplaced</label>
+                <%} else {%>
+                    <input type="radio" name="status" value="true"  disabled id="placed">
+                    <label for="placed">Placed</label>
+                    <input type="radio" name="status" value="false" checked disabled id="unplaced">
+                    <label for="unplaced">Unplaced</label>
+                <%}%>
+            </div>
+            <div class="score">
+                <input type="number" class="in" name="dsa_score" value="<%=student.scores[0].marks%>" id="" disabled placeholder="DSA Score">
+                <input type="number" class="in" name="web_score" value="<%=student.scores[1].marks%>" id="" disabled placeholder="Web Dev Score">
+                <input type="number" class="in" name="react_score" value="<%=student.scores[2].marks%>" id="" disabled placeholder="React Score">
+            </div>
+
+            <div class="post-edit" style="display:none;">
+                <button type="submit" class="form-btn">Edit</button>
+            </div>
+
+            <div class="interviews">
+                <h3>Interviews</h3>
+                <div class="">
+                    <span>Company Name</span>
+                    <span>Date</span>
+                    <span>Status</span>
+                </div>
+                <%for(interview of student.interviews) {%>
+                    <div class="">
+                        <span><%=interview.companyName%></span>
+                        <span><%=interview.date%></span>
+                        <span><%=interview.result%></span>
+                    </div>
+                <%}%>
+            </div>
+
+            <div class="enable-edit-div">
+                <button type="button" class="form-btn enable-edit">Edit Details</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <script>
+        document.querySelector(".enable-edit").addEventListener("click",(e)=>{
+            e.target.parentNode.style.display = "none";
+            document.querySelector(".post-edit").style.display = "block";
+            document.querySelector(".interviews").style.display = "none";
+            document.querySelectorAll("input").forEach(input=>{
+                input.removeAttribute("disabled");
+                // console.log(input);
+            })
+        })
+    </script>
+</body>
+</html>

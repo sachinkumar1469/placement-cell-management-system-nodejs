@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <header class="header">
+        <h2>PlaceMent Cell</h2>
+        <div class="div">
+            <a href="" class="btn">Students</a>
+            <a href="" class="btn">Interview</a>
+            <a href="" class="btn">Download</a>
+            <a class="btn" href="/auth/logout">LogOut</a>
+        </div>
+    </header>
+    <div class="main form-cont">
+        <form action="/interview/<%=interview._id%>" method="post">
+            <input type="text" class="in" name="companyName" id="" value="<%=interview.companyName%>" disabled placeholder="Name">
+            <input type="text" class="in" name="date" id="date" value="<%=interview.date%>" disabled placeholder="Email">
+      
+
+            <div class="post-edit" style="display:none;">
+                <button type="submit" class="form-btn">Edit</button>
+            </div>
+
+            <div class="interviews">
+                <h3>Students</h3>
+                <div class="" style="grid-template-columns:1fr 1fr">
+                    <span>Student Name</span>
+                    <span>Status</span>
+                </div>
+                <%for(student of interview.students) {%>
+                    <div class="" style="grid-template-columns:1fr 1fr">
+                        <span><%=student.name%></span>
+                        <span><%=student.result%></span>
+                    </div>
+                <%}%>
+            </div>
+
+            <div class="enable-edit-div">
+                <button type="button" class="form-btn enable-edit">Edit Details</button>
+                <a href="/interview/delete/<%=interview._id%>" class="form-btn danger">Delete Company</a>
+                <button type="button" class="form-btn success">Add Student</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <script>
+        document.querySelector(".enable-edit").addEventListener("click",(e)=>{
+            e.target.parentNode.style.display = "none";
+            document.querySelector(".post-edit").style.display = "block";
+            document.querySelector(".interviews").style.display = "none";
+            document.querySelectorAll("input").forEach(input=>{
+                input.removeAttribute("disabled");
+                // console.log(input);
+            })
+            document.querySelector("#date").setAttribute("type","date");
+        })
+    </script>
+</body>
+</html>

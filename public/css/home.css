@@ -1,0 +1,31 @@
+.home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 8rem;
+    column-gap: 5rem;
+    padding-top: 3rem;
+}
+.home>*{
+    /* border: 2px solid red; */
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.student__detail{
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    display: flex;
+    padding-inline: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+    border-top: none;
+    cursor: pointer;
+}
+.student__detail:hover{
+    background-color: azure;
+}
+.student__detail:first-child{
+    border-top: 1px solid lightgray;
+}

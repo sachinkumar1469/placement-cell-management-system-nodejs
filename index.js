@@ -38,7 +38,19 @@ app.set('views','views');
 app.use(express.urlencoded({extended:false}));
 app.use(express.static('public'));
 
+app.use((req,res,next)=>{
+    if(req.isAuthenticated()){
+        console.log("In local middleware");
+        res.locals.user = req.user;
+    }
+    next();
+})
+
 app.use("/auth",require("./routes/auth"));
+
+app.use("/student",require("./routes/student"));
+
+app.use("/interview",require("./routes/interview"));
 
 app.use(require("./routes/user"));
 
