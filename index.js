@@ -52,5 +52,7 @@ app.use("/student",require("./routes/student"));
 
 app.use("/interview",require("./routes/interview"));
 
+app.use("/csv",require("./routes/csv"));
+
 app.use(require("./routes/user"));
 

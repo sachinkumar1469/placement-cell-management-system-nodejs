@@ -12,8 +12,11 @@ const interviewSchema = new Schema({
     },
     students:[{
         name:{
-            type:Schema.Types.ObjectId,
-            ref:"Student"
+            type:Schema.Types.String,
+        },
+        email:{
+            type:String,
+            required:true
         },
         result:{
             type:String,

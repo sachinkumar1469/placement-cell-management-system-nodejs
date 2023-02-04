@@ -7,13 +7,44 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
+
+    <style>
+        body{
+            position: relative;
+        }
+        .add-student{
+            background-color: white;
+            width: 500px;
+            height: 200px;
+            border: 2px solid black;
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            transform: translate(-50%,-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+        .add-student form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .add-student form input{
+            height: 3rem;
+            font-size: 1.8rem;
+            padding: 0.5rem 1rem;
+
+        }
+    </style>
 </head>
 <body>
     <header class="header">
-        <h2>PlaceMent Cell</h2>
+        <a href="/"><h2>PlaceMent Cell</h2></a>
         <div class="div">
-            <a href="" class="btn">Students</a>
-            <a href="" class="btn">Interview</a>
             <a href="" class="btn">Download</a>
             <a class="btn" href="/auth/logout">LogOut</a>
         </div>
@@ -31,8 +62,8 @@
             <div class="interviews">
                 <h3>Students</h3>
                 <div class="" style="grid-template-columns:1fr 1fr">
-                    <span>Student Name</span>
-                    <span>Status</span>
+                    <span style="font-weight: 700;">Student Name</span>
+                    <span style="font-weight: 700;">Status</span>
                 </div>
                 <%for(student of interview.students) {%>
                     <div class="" style="grid-template-columns:1fr 1fr">
@@ -45,9 +76,16 @@
             <div class="enable-edit-div">
                 <button type="button" class="form-btn enable-edit">Edit Details</button>
                 <a href="/interview/delete/<%=interview._id%>" class="form-btn danger">Delete Company</a>
-                <button type="button" class="form-btn success">Add Student</button>
+                <button type="button" class="form-btn success add-studetn-btn">Add Student</button>
             </div>
             
+        </form>
+    </div>
+
+    <div class="add-student">
+        <form action="/interview/add-student/<%=interview._id%>" method="post">
+            <input type="text" name="studentEmail" id="" placeholder="Student Email">
+            <button type="submit" class="form-btn">Add Student</button>
         </form>
     </div>
 
@@ -61,6 +99,10 @@
                 // console.log(input);
             })
             document.querySelector("#date").setAttribute("type","date");
+        })
+
+        document.querySelector(".add-studetn-btn").addEventListener("click",(e)=>{
+            document.querySelector(".add-student").style.display = "flex";
         })
     </script>
 </body>

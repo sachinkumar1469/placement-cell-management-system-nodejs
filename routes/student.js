@@ -95,8 +95,16 @@ router.post("/:_id",(req,res,next)=>{
     })
 })
 
-// router.get("/delete/:studentId",(req,res,next)=>{
-//     Student.findByIdAndRemove()
-// })
+
+router.get("/delete/:_id",(req,res,next)=>{
+    console.log(req.params._id);
+    Student.findByIdAndDelete(req.params._id)
+    .then(result=>{
+        res.redirect("/");
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
 
 module.exports = router;

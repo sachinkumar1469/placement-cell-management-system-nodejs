@@ -2,6 +2,7 @@ const router = require("express").Router();
 const path = require('path');
 
 const Interview = require("../model/interview");
+const Student = require("../model/student");
 
 router.get("/add",(req,res,next)=>{
     // console.log(req.body);
@@ -64,6 +65,45 @@ router.get("/delete/:_id",(req,res,next)=>{
         .catch(err=>{
             console.log(err);
         })
+})
+
+router.post("/add-student/:_id",(req,res,next)=>{
+    console.log(req.params);
+    console.log(req.body);
+    const {studentEmail} = req.body;
+
+    Student.findOne({email:studentEmail})
+    .then(studentRes=>{
+        if(!studentRes){
+            return res.redirect("back");
+        }
+        console.log(studentRes);
+        Interview.findById(req.params._id)
+            .then(currInt=>{
+                currInt.students.push({
+                    name:studentRes.name,
+                    email:studentRes.email,
+                    result:"NOT_ATTEMPTED"
+                })
+                studentRes.interviews.push({
+                    interviewID:req.params._id,
+                    date:currInt.date,
+                    companyName:currInt.companyName,
+                    result:"NOT_ATTEMPTED"
+                })
+                return currInt.save();
+            })
+            .then(()=>{
+                studentRes.save();
+                res.redirect("back");
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    })
+    .catch(err=>{
+        console.log(err);
+    })
 })
 
 module.exports = router;

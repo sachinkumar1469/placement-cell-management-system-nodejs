@@ -10,10 +10,8 @@
 </head>
 <body>
     <header class="header">
-        <h2>PlaceMent Cell</h2>
+        <a href="/"><h2>PlaceMent Cell</h2></a>
         <div class="div">
-            <a href="" class="btn">Students</a>
-            <a href="" class="btn">Interview</a>
             <a href="" class="btn">Download</a>
             <a class="btn" href="/auth/logout">LogOut</a>
         </div>
@@ -50,9 +48,9 @@
             <div class="interviews">
                 <h3>Interviews</h3>
                 <div class="">
-                    <span>Company Name</span>
-                    <span>Date</span>
-                    <span>Status</span>
+                    <span style="font-weight: 700;">Company Name</span>
+                    <span style="font-weight: 700;">Date</span>
+                    <span style="font-weight: 700;">Status</span>
                 </div>
                 <%for(interview of student.interviews) {%>
                     <div class="">
@@ -65,10 +63,14 @@
 
             <div class="enable-edit-div">
                 <button type="button" class="form-btn enable-edit">Edit Details</button>
+                <a href="/student/delete/<%=student._id%>" class="form-btn danger">Delete Stduent</a>
+
             </div>
             
         </form>
     </div>
+
+   
 
     <script>
         document.querySelector(".enable-edit").addEventListener("click",(e)=>{
